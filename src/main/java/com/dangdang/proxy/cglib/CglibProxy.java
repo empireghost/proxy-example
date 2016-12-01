@@ -2,11 +2,17 @@ package com.dangdang.proxy.cglib;
 
 import java.lang.reflect.Method;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 public class CglibProxy implements MethodInterceptor {
+	
+	private static final Logger logger = LoggerFactory.getLogger(CglibProxy.class);
+	
 	// 要代理的原始对象
 	private Object obj;
 
@@ -37,10 +43,10 @@ public class CglibProxy implements MethodInterceptor {
 	}
 
 	private void doBefore() {
-		System.out.println("before method invoke");
+		logger.info("before method invoke");
 	}
 
 	private void doAfter() {
-		System.out.println("after method invoke");
+		logger.info("after method invoke");
 	}
 }
